@@ -27,31 +27,13 @@ const WeatherPage = ()=>{
 
     const [storeManagement , setStoreManagement] = useRecoilState(weatherInfo); 
 
-
-    // let allIcons = {
-    //     "01d" : clear,
-    //     "01n" : clear,
-    //     "02d" : cloud,
-    //     "02n" : cloud,
-    //     "03d" : cloud,
-    //     "03n" : cloud,
-    //     "04d" : cloud,
-    //     "04n" : drizzle,
-    //     "09d" : rain,
-    //     "09n" : rain,
-    //     "10d" : rain,
-    //     "10n" : rain,
-    //     "13d" : snow,
-    //     "13n" : snow,
-    // };
-
     async function getWeatherData()
     {
         try {
             let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName || "New Delhi"}&units=metric&appid=${openWeatherKey}`);
             let data = await res.json();
 
-            console.log(data, "data");
+            // console.log(data, "data");
 
             if(Object.keys(data).length){
                 setIsLoading(false);
@@ -67,7 +49,7 @@ const WeatherPage = ()=>{
         {
             setIsLoading(false);
             setWeatherData(false);
-            console.log(err);
+            // console.log(err);
         }
     }
 
@@ -87,7 +69,6 @@ const WeatherPage = ()=>{
 
     useEffect(()=>{
         getWeatherData();
-        // getWeatherForecast();
     },[]);
 
     return(
@@ -121,7 +102,9 @@ const WeatherPage = ()=>{
                     </div>               
                 </div>
                 </>
-                : (weatherData?.cod == "404") ? <p className="error">Opps!! Search City Not Found</p> : <p className="error">Error Loading Data</p>
+                : (weatherData?.cod == "404") 
+                ? <p className="error">Opps!! Search City Not Found</p> 
+                : <p className="error">Error Loading Data</p>
             }
         </div>
     )

@@ -11,7 +11,6 @@ const WeatherForecast = () => {
 
     async function getWeatherForecast()
     {
-        console.log(storeManagement?.coord?.lat , "lat ************")
         try{
             let res = await fetch(` ${API_TOMORROW.base}?location=${storeManagement?.coord?.lat || "28.6128"},${storeManagement?.coord?.lon || "77.2311"}&fields=${API_TOMORROW.fields}&timesteps=1d,1h&units=metric&apikey=${API_TOMORROW.key}`);
             let data = await res.json();
@@ -38,7 +37,6 @@ const WeatherForecast = () => {
     }
 
     useEffect(()=>{
-        console.log("api call occured")
         getWeatherForecast();
     },[storeManagement?.coord?.lat]);
 
