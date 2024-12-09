@@ -5,7 +5,8 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:1234](http://localhost:1234) to view it in your browser.
 
-Deployment URL :
+Deployment URL : 
+https://parvesh-react-weather.netlify.app/
